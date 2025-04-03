@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 폼 요소 알아보기 </h1>
+    <!-- action = 폼 요수의 값을 전송할 서버주소 (페이지 주소)
+        method = "get|post" 데이터를 서버에 전송하는 방식
+        get, post, put, delete, patch 중 get, post만 가능 
+        get방식 : url주소에 정보를 노출함
+        모든 폼요소는 반드시 name이 있어야한다. id는 안 된다. (id는 단순히 css or js를 위한 속성)
+
+        -->
+
+    <form action  = "ex03_table.html" method = "post"> <!-- Action 지정-->
+        <label for = "id"> 이름 : </label><input type = "text" name="id" id="id" value = "id" maxlength="10" readonly/> <!-- name 요소 없으면 데이터가 안 날아간다. --> <br>
+        <label for = "name"> 이름 : </label><input type = "text" name="name" id="name" value = "입력하세요" maxlength="10" disabled/> <!-- readonly는 전송이 되지만 disabled는 전송이 안된다 --> <br>
+        <label for = "password"> password : </label><input type = "text" name="password" id="password" value = "입력하세요" maxlength="10"/> <!-- name 요소 없으면 데이터가 안 날아간다-->
+        
+        <fieldset>
+                <legend> test </legend>
+                <input type = "radio" name="" gender="" value = "남자"> 남자 <!-- radio는 name이 같은 항목끼리 그룹화된다-->
+                <input type = "radio" name="" gender="" value = "여자"> 여자
+        </fieldset>
+
+        <fieldset>
+            <legend> hobby </legend>
+            <input type = "checkbox" name = "hobby" value = "1" > 등산
+            <input type = "checkbox" name = "hobby" value = "2" > 잠
+            <input type = "checkbox" name = "hobby" value = "2" > 독서 <!-- value 값이 넘어간다-->
+            <input type = "checkbox" name = "hobby" value = "4" > 게임
+        </fieldset> <!--checkbox는 name이 같아도 달라도 상관없다. name을 동일하게 많이 작성한다. 전송하거나 js에서 접근할때 배열로 처리가 가능하기 때문. 이름이 같으면 반복문 처리가 편리-->
+
+        직업 선택<br>
+        <select name = "job" multiple size = "3" > <!-- multiple 옵션 시 ctrl 누르면 다른 것 선택 가능 size = 표시되는 항목수 -->
+            <option value = "0"> -- 직업을 선택하세요 -- </option>
+            <optgroup dev = "developer"> Developer
+                <option value = "developer"> 개발자 </option>
+                <option value = "devsigner"> 개자이너 </option>
+                <option value = "desiloper"> 디발자</option>
+            </optgroup>
+            <option value = "student"> 학생</option>
+        </select>
+        설명<br>
+        <textarea name = "explain" rows = "4" cols = "20"> </textarea><br>
+        <input type = "submit" value = "전송"> <!-- action 지정한 주소로 이동한다. --> <!-- get은 URL에 정보를 노출한다. queryString 형태로 -> url?name=입력내용&password=입력내용? ... post는 바디에 숨겨서 보낸다-->
+        <input type = "reset" value = "취소"><br>
+    </form>
+    <br>
+
+</body>
+</html>
