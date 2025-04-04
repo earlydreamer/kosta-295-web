@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .main {
+        width: 500px;
+        height: 400px;
+        background-color: pink;
+        color:white;
+        align-content: center;
+        position: relative;
+    }
+
+    div div {
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        align-content: center;
+    }
+
+    .a {background-color: red;}
+
+    .b {background-color: green;
+        top: 20px; left: 20px;
+        position: absolute;
+        /*float:left*/
+        /*position: relative*/
+    }
+
+    .c {background-color: blue;
+    }
+</style>
+
+<body>
+    <!-- div.main>div.a{$}*3-->
+    <div class="main">
+        <div class="a">1</div>
+        <div class="b">2</div>
+        <div class="c">3</div>
+    </div>
+</body>
+
+
+
+</html>

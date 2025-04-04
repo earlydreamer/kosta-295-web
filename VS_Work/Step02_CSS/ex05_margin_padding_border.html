@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    div {
+        width: 300PX;
+        height: 300px;
+    }
+
+    .a {
+        background-color: red;
+        color: white;
+    }
+
+    .b {
+        background-color: blue;
+        margin-top: 10px;
+        margin-bottom: 50px;
+        margin-left: 50px;
+        border-style: dashed dotted;
+        border-width: 10px;
+        border-color : skyblue yellow orange;
+        color: white;
+        box-sizing: content-box;
+        vertical-align: middle;/*블락요소는 vertical-align 안 먹음*/
+        /*display:table-cell;/* table의 cell 처럼 동작한다*/
+        align-content:center; /*display:block 요소일 경우 수직정렬 ... flex 속성*/
+
+    }
+
+    .c {
+        background-color: green;
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding:10px;
+        color: white;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <div class="a">ddddddd</div>
+    <div class="b">ddddddd</div>
+    <diV class="c">ddddddd</diV>
+</body>
+
+</html>

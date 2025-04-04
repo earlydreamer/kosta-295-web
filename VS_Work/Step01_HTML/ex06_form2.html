@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> form 요소 알아보기</h1>
+    <form action = "ex05_form.html" post name = "get" enctype = "multipart/form-data">
+        이름 : <input type = "text" name = "name" size = "10"><br>
+        날짜 : <input type = "date" name = "date" max = "2025-07-18" min = "2025-02-13" ><br> 
+        나이 : <input type = "number" name = "age" /> <br>
+        파일 : <input type = "file" name = "file"> <!-- Type file은 post 방식일때만 작동한다 반드시 method = post로 설정해야 함--> <!-- enctype = "multipart/form-data" 일때만 가능-->
+
+        <input type = "hidden" name = "state" value = 100><br>
+        <input type = "hidden" name = "message" value = "hello world"><br>
+        <input type = "image" src="./img/dog.gif"> <br>
+        <input type = "button" name = "button" value = "button">
+        <input type = "button" name = "reset" value = "reset">
+        <input type = "button" name = "submit" value = "submit">
+
+        <hr>
+
+        <button> click1 </button>
+        <button type = "reset"> click2 </button>
+        <button type = "submit"> click3 </button>
+
+
+        
+
+
+    </form>
+</body>
+</html>

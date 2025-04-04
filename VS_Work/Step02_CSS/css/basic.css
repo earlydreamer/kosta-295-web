@@ -1,0 +1,98 @@
+
+
+
+*{color:red}
+
+
+
+/* 태그에적용*/
+h3 {
+    color: red;
+    background-color: pink;
+}
+
+/*id로 찾기 # 이름*/
+#a {
+    font-style: italic;
+    text-decoration: underline
+}
+
+
+/* class로 찾기*/
+.a {
+    border: double 10px skyblue
+}
+
+.b {
+    text-align: center
+}
+
+/*자손찾기*/
+/*
+        div p{
+            background-color: aqua;
+        }
+        */
+
+/*
+        div >p {
+            background-color :blueviolet
+
+        }
+        */
+
+div~p {
+    /* + Div의 첫번쨰 형제 노드*/
+    background-color: blue;
+
+    /* ~ Div의 모든 형제 노드*/
+
+}
+
+/* 속성으로 찾기 [속성=값]*/
+input[type] {
+    border: solid red 3px;
+}
+
+[name=password] {
+    background-color: aquamarine;
+}
+
+[name^=n] {
+    font-size: 25px;
+}
+
+/*^는 시작, *는 끝나는 */
+table {
+    width: 500;
+    height: 400;
+    border: 1px red solid;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid;
+    text-align: center;
+    vertical-align: top;
+}
+
+table tr td:first-child {
+    width: 50px;
+    color: red;
+}
+
+table tr td:last-child {
+    width: 50px;
+    color: blue;
+}
+
+table tr:nth-child(2n) {
+    background-color: aquamarine;
+}
+
+table tr:nth-child(1) {
+    background-color: darkgrey;
+    font-size: 22px;
+    font-style: italic;
+
+}

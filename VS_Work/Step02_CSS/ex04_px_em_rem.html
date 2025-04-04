@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .outer {
+            font-size:32;   
+            text-shadow: 20,5,10,#FF55FF;
+            background-color: skyblue;
+            width: 25vw;
+            /* vh viewHeight  vw -- viewWidth */
+            /*height:50%; /* body에 높이가 없기 때문에 적용 안된다. 기준이 되는 부모의 크기 내에서 비율로 가져오기 때문... 어떻게 감싸느냐에 따라 크기가 달라짐*/
+            height: 50vh;
+
+        }
+
+        .a {
+            background-color: pink;
+            font-size: 0.8em
+        }
+
+        .b {
+            background-color: antiquewhite;
+            font-size: 1.5rem; /*root(windows 기본 폰트) 기준으로  ==16px */
+        }
+
+        .c {
+            background: beige;
+            font-size: 20px
+        }
+    </style>
+    <div class="outer">
+        px em vs rem <br>
+        <dlv class="a">em : 부모노드를 기준으로</dlv><br>
+        <dlv class="b">rem : root노드를 기준으로</dlv><br>
+        <dlv class="c">px : 해상도 기준으로</dlv><br>
+    </div>
+
+</body>
+
+</html>
