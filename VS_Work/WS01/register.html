@@ -13,10 +13,10 @@
         <main>
         <div class="contents">
             <h1>Register</h1>
-            <form>
-                <label for="user_name">이름<input type=text id = "user_name"></label><br>
-                <label for="user_email">이메일<input type=email id = "user_email"></label><br>
-                <label for="user_phone">연락처<input type=tel id = "user_phone"></label><br>
+            <form id="form_register" action="index2.html" method="post" ><!-- index2 = Servlit 들어간 페이지 될 예정 -->
+                <label for="user_name">이름<input type=text id = "user_name" required = "required" autofocus = "autofocus"> </label><br> <!-- required = 반드시 입력해라 -->
+                <label for="user_email">이메일<input type=email id = "user_email"></label><br> <!-- input type : 입력 형식에 맞게 -->
+                <label for="user_phone">연락처<input type=tel id = "user_phone"></label><br> <!-- 파싱 방법에 따라 type 안주기도 함 -->
                 <label for="user_password">비밀번호<input type=password id ="user_password"></label><br>
                 <label for="user_password_validation">비밀번호 확인<input type=password id = "user_password_validation"></label><br>
                 <hr> <input type="submit" value="회원가입">
