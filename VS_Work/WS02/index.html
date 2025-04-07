@@ -24,10 +24,11 @@
         margin-right: 25px; */
         /*grid를 사용하는 방식*/
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
         /*영역의 33% 차지(3개씩 출력)*/
         margin-left: 25px;
         margin-right: 25px;
+        column-gap : 10px;
 
     }
 
@@ -36,7 +37,7 @@
     }
 
     article {
-        margin-right: 10px;
+        /* margin-right: 10px; */
     }
 
     .main-item img {
@@ -175,7 +176,7 @@
 
         </main>
         <footer>
-            <hr class="footer-hr">
+            <!-- <hr class="footer-hr"> -->
             <!-- 주소 각 부분이 의미를 갖도록 잘라서 -->
             <dl id="footer-address">
                 <dt class="post-number"> 12345 </dt>
