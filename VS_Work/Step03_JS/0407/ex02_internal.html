@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Script 태그는 어디에 넣느냐 -> 원하는 데 열어도 돌아간다-->
+    <h1 onMouseOver = "mouseOver(this)" onMouseOut ="mouseOut(this)">
+        Hello Javascript
+    </h1>
+
+    <script>
+        // JS영역에서 주석 -> //, /* */
+        //브라우저에 출력
+        document.write("<h1 style='color:red'>Hello Javascript with Script tag</h1><br>");
+
+        //콘솔에 출력
+        console.log("Hello Javascript with console log");
+
+        //마우스를 Over했을 때 기능
+        function mouseOver(thisObj){
+            thisObj.style.backgroundColor = "gray";
+            thisObj.style.color = "white";
+            
+        }
+        //마우스를 Out 했을 때 기능
+        function mouseOut(thisObj){
+            thisObj.style.backgroundColor = "white";
+            thisObj.style.color = "black";
+
+        }
+
+    </script>    
+
+    Script 태그는 또 열 수 있음
+    <script>
+        document.write("<h3> Hello Javascript with second Script Tag</h3>");
+        //HTML 문서가 로드된 후에 document.write()를 사용하면 기존 HTML이 전부 삭제된다
+    </script>
+
+
+
+</body>
+</html>

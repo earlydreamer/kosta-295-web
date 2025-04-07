@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> 변수에 대해 - Var, Let, Const
+    </h1>
+ 
+    <script>
+        // var 변수명 = 값;
+        var a;
+        var b = 20;
+        //var는 생략 가능하다
+        c = "Hello World!";
+        document.write("<h3>");
+        document.write("a = " + a + "," + typeof (a) + "<br>"); // 초기화되지 않은 경우 Undefined가 뜬다
+        document.write("b = " + b + "," + typeof (b) + "<br>");
+        document.write("c = " + c + "," + typeof (c) + "<br>");
+        //      document.write("</h3>");
+
+        document.write("<hr>");
+
+        a = new String("이거 됨");
+        b = new Array(1, 2, 3, 4, 5);
+        c = false;
+
+        //    document.write("<h3>");
+        document.write("a = " + a + "," + typeof (a) + "<br>");
+        document.write("b = " + b + "," + typeof (b) + "<br>");
+        document.write("c = " + c + "," + typeof (c) + "<br>");
+        //        document.write("</h3>");
+
+        var a = "된다니까요";
+
+        //동일한 이름의 변수를 또 선언한다면
+        // 변수 선언전에 사용하려고 한다면
+        // JS에서는 가능하다
+        // 호이스팅(Hoisting)이라는 개념이 있다.
+        // var로 선언된 변수는 선언부가 제일 위로 올라간다. 미리 위로 끌어올린다는 뜻
+        // var a = "된다니까요"; // 이 부분이 제일 위로 올라간다.
+        // 단, 초기화는 하지 않는다. (변수명을 c의 prototype처럼 미리 인식시킴. 개념만 비슷하고 내부 동작은 전혀 다르긴 함) 
+        // 비슷하게 동작하는 개념이 있다고 명칭 혼동하면 안 됨 js의 prototype은 전혀 다른 개념이므로 혼동하지 않도록 한다...
+        // 사용되는 부분을 만나면 그 시점에 초기화된다
+        // 아예 선언되지 않은 변수는 사용할 수 없다. (hoisting이 동작하지 않기 때문)
+
+        function test() {
+            alert("hello world");
+        }
+
+
+        function test() {
+            alert("test2 hello world 2");
+        }
+        document.write("</h3>");
+
+        function test2() {
+            var a = 100; // 지역변수이름이 전역변수와 중복되는경우
+            var namae = "tesssssst"; //지역변수에 있는 유일한 변수
+            age = 20;// 함수안에서 변수 선언할떄 var 생략한 경우 (전역변수가 됨)
+
+            console.log(a); //지역변수
+            console.log(this.a); //"된다니까요" -> 전역변수로 선언된 애가 출력된다.
+            console.log(namae);
+            console.log(age);
+        }
+
+        //        console.log(a);
+        //        console.log(name);
+        //        console.log(age);
+
+        function test3() {
+            // a="asdf";
+            console.log("test3 call")
+            console.log(a);
+            console.log(this.a);
+            //console.log(namae); // test2의 지역변수이므로 인식 못함
+            console.log(age);
+            console.log("test3 end");
+        }
+
+        test();
+        test2();
+        test3();
+        test4();
+
+        function test4(){
+            console.log(i); // for문 돌기 전  i = undefined
+            for(var i =0; i<5;i++){ 
+                //console.log("i = " + i); //기능
+            }
+            {
+                var j = 100;
+            }
+            console.log(i); // for문이 끝난 후에도 i는 남아있다.
+            console.log(j); // 블록 밖에서도 j는 남아있다.
+            // javascript의 변수들은 함수 블럭 단위로 유효하다.
+            
+            
+        }
+        // console.log(i);// 지역변수이므로 밖에선 호출 안된다
+
+        // es5 이전까지는 var로 변수를 선언했다.
+        // var의 문제점으로 인해 es6에서 let과 const가 나왔다.
+        // 의도하지 않은 전역변수, 중복선언, 스코프 범위 인식 등 var의 문제
+
+        // let과 const는 블록 스코프를 지원한다.
+        // 블럭 단위로 유효하므로 var에 비해 수명 주기가 전통적인 언어와 비슷하다.
+        // let은 재선언이 불가능하다. (재할당은 가능)
+
+        //let은 선언 이전에 참조하면 참조 에러가 발생한다.
+        //console.log(a); // ReferenceError: Cannot access 'a' before initialization
+        //temporary dead zone (TDZ) : let과 const로 선언된 변수는 선언되기 전까지 접근할 수 없다.
+
+
+    </script>
+
+
+</body>
+
+</html>

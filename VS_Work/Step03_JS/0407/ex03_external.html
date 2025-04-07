@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Script 태그는 어디에 넣느냐 -> 원하는 데 열어도 돌아간다-->
+    <h1 onMouseOver = "mouseOver(this)" onMouseOut ="mouseOut(this)">
+        Hello Javascript
+    </h1>
+    <!-- 외부 js파일 연결 -->
+    <script src = "js/basic.js">
+        console.log("src 속성이 있는 script 태그 내에서는 자바스크립트 코드를 작성할 수 없다.");
+        // src 속성이 있는 script 태그는 외부 js파일을 불러오는 용도로만 사용된다.
+    </script>    
+
+    Script 태그는 또 열 수 있음
+    <script>
+        document.write("<h3> Hello Javascript with second Script Tag</h3>");
+        //다른 스크립트에 있는 건 src와 상관없이 실행된다.
+        //HTML 문서가 로드된 후에 document.write()를 사용하면 기존 HTML이 전부 삭제된다
+    </script>
+
+
+
+</body>
+</html>
