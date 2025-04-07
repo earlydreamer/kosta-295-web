@@ -24,16 +24,41 @@
         align-content: center;
     }
 
-    .a {background-color: red;}
+    .a {background-color: red;
+        position:relative;
+        top:60px;
+        left:30px;
+        z-index:1; /*z-index : 우선순위*/
+    }
 
     .b {background-color: green;
-        top: 20px; left: 20px;
-        position: absolute;
+        top: 20px; 
+        left: 20px;
+        /* top: 0px; 
+        left: 0px; */
+
+        /* z-index:0;z-index의 묵시적 기본값은 0이다 */
+        /* position: absolute; 가장 가까운 부모 중 position이 static이 아닌 대상을 중심점으로 */
         /*float:left*/
-        /*position: relative*/
+        position: relative /*자기가 원래 들어갈 영역을 점유하고 있다. offset으로 옮겨가도 다른 요소가 그 자리에 올 수 없다*/
+        /* position:fixed; /*브라우저 화면을 기준으로 특정 지점에 고정 */
+        /* position:sticky; relative와 fixed의 중간 성격... 자신이 원래 있는 위치를 기준으로 고정... 특정 위치에 영역을 고정시킴 */
     }
 
     .c {background-color: blue;
+        top:-50px;
+        position:relative;
+
+    }
+
+    .view{
+        width:150px;height:150px;
+        border:inset 3px skyblue;
+        padding:5px;
+        box-sizing: border-box;/*박스 사이즈에 맞춘다*/
+        top:10px;
+        left:10px;
+        position:absolute;
     }
 </style>
 
@@ -44,6 +69,11 @@
         <div class="b">2</div>
         <div class="c">3</div>
     </div>
+
+    <div class="view">
+        <h4> 오늘 본 상품 </h4>
+    </div>
+
 </body>
 
 

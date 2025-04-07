@@ -9,13 +9,19 @@
   .main {
     background-color: pink;
     height: 100vh;
-    /*overflow:visible;*/
-    display: flex;
-    flex-direction: row;
-    flex-flow: nowrap;
-    justify-content: space-evenly;
+    /* overflow:visible;*/
+    display: flex; /*기본  row 방향으로 배치 */
+    /* flex-direction: column; 세로 방향으로 배치 */
+    /* flex-direction: row-reverse; 반대 방향으로 배치 */
+    /* flex-wrap:wrap; */
+    flex-flow:row wrap;
+    /* flex-direction: row; */
+    /* flex-flow: nowrap; */
+    /* justify-content: space-evenly; */ /*사이 간격을 일정하게*/
     /*중심축을 중심으로 정렬*/
-    align-items: flex-start;
+    /* align-items: flex-start; */ 
+    /*중심축을 기준으로 요소 정렬*/
+    justify-content: end; /*우측 끝에 붙여라*/
   }
 
   .main .item {
