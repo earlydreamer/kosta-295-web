@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1> Javascript의 False</h1>
+    <script>
+        //javascript에는 7개의 falsy 값이 있다.
+        // falsy 값 : false, 0, "", null, undefined, NaN, -0 (이외의 모든 값은 truthy 값이다.)\
+        //falsy 값은 boolean으로 변환하면 false로 평가된다.
+
+        let test = function (name) {
+            // if (name === "") {
+            //     console.log("잘못된 이름입니다.");
+            // } else {
+            //     console.log(`${name}님 반갑습니다.`);
+            // }
+
+            // name ? console.log(`${name}님 반갑습니다.`) : console.log("잘못된 이름입니다.");
+
+            name&& console.log(`${name}님 반갑습니다.`); //모든 변수를 조건문에 넣을 수 있다. 비교연산이 아닌 곳에서 falsey가 아닌 값이 들어가면 true로 평가된다.
+
+        }
+        let inputName ;
+        inputName = null;
+        inputName = 0;
+        inputName = NaN;
+        inputName = -0;
+        inputName = false;
+        inputName = "";
+        test(inputName);
+
+
+
+    </script>
+</body>
+
+</html>

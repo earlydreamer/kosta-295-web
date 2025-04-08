@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>arrow 함수</h1>
+    <script>
+        //arrow 함수 작성법
+        //() =>{} : 매개변수가 없거나 1개일 때 사용한다. (매개변수가 2개 이상일 경우 ()로 묶어야 한다.)
+        // (a,b)=>{} : 매개변수가 2개 이상일 때 사용한다.
+        // ()=> 기능 return; : 리턴이 있는 함수일이면서 한줄로 끝날 때 {}를 생략할 수 있다. 
+        // () =>기능 : 기능이 한 문장일 경우 {}를 생략할 수 있다. 이 경우 return도 생략할 수 있다.
+
+        let test01 = ()=>{
+            console.log("hello world");
+        }
+        
+        let test02 = () => console.log("hello world"); //중괄호 및 return 생략 가능
+        let test03 = (a,b) => console.log(`a+b = ${a+b}`); //return 생략 시 return되는 값은 undefined??
+        let test03_2 = (a,b) => {
+            console.log(`a+b = ${a+b}`); 
+            return a+b; //return되는 값은 a+b
+        }
+        let test04 = (a,b) => a*b; //return 생략 시 return되는 값은 a*b 
+
+        test01();
+        test01("123"); //매개변수 개수가 맞지 않아도 오류가 나지 않는다. (undefined로 처리되며 해당 값은 무시됨)
+        test02();
+        let res1 = test03(1,2);
+        let res2 = test03_2(1,2);
+        res3 = test04(1,2);
+        res4 = test04(1,2,3);//3개 이상을 넣어도 2개만 사용된다. (3개째는 Undefined 처리되며 무시됨)
+        res5 = test04(1)//1개만 넣어도 1개만 사용된다. (2개째는 Undefined로 처리됨)
+        res6 = test04("12",1)
+        res7 = test04("12a",1)
+        res8 = test04(parseInt("12a"),2)
+
+        console.log(res1); //return 생략으로, undefined가 return됨을 확인 가능
+        console.log(res2); //a+b가 return됨
+        console.log(res3); //a*b가 return됨
+        console.log(res4); //a*b가 return됨 (3개째가 무시됨을 확인)
+        console.log(res5); //undefined가 들어갔으므로 NaN이 나옴
+        console.log(res6); //
+        console.log(res7); //NaN
+        console.log(res8); 
+
+        test05 = (a,b) => {
+            let convertA = parseInt(a);
+            let convertB = parseInt(b);
+            if(isNaN(convertA) || isNaN(convertB)){
+                console.log("숫자가 아닙니다.");
+                return NaN;
+            return a+b;
+            }
+        }
+        test05("123a","a123"); //숫자가 아닙니다. 
+        test05("123a","123"); //숫자가 아닙니다. 
+
+        let re= test04(5,null);
+        re&&console.log(re); 
+
+    </script>
+</body>
+</html>

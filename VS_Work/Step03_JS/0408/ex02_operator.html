@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>연산자</h1>
+    <script>
+        let i=10;
+        let j="10";
+
+        //탬플릿 문자열
+        // ES6에서 도입된 새로운 문자열 리터럴로, 백틱(`)으로 감싸서 사용한다.
+        // 변수나 표현식을 ${}로 감싸서 문자열에 삽입할 수 있다.
+        // 여러 줄의 문자열을 작성할 수 있다.
+        // 문자열 보간 (string interpolation) : 변수를 문자열에 삽입하는 방법으로, 템플릿 리터럴을 사용하여 간편하게 작성할 수 있다.
+        // 다중 행 문자열 (multiline string) : 여러 줄의 문자열을 작성하는 방법으로, 템플릿 리터럴을 사용하여 간편하게 작성할 수 있다.
+
+        document.write(`i={i}, j=${j}<br>`); // i=10, j=10(문자열)
+        document.write(`i + j = ${i + j}<br>`); // i + j = 1010 (문자열로 연결됨)
+        document.write(`i - j = ${i - j}<br>`); // i - j = 0 (숫자로 계산됨)
+        document.write(`i * j = ${i * j}<br>`); // i * j = 100 (숫자로 계산됨)
+        document.write(`i / j = ${i / j}<br>`); // i / j = 1 (숫자로 계산됨)
+        document.write(`i % j = ${i % j}<br>`); // i % j = 0 (숫자로 계산됨)
+        document.write(`i ** j = ${i ** j}<br>`); // i ** j = 10000000000 (숫자로 계산됨)
+        document.write(`i++ = ${i++}<br>`); // i++ = 10 (후위 증가 연산자)
+        document.write(`++i = ${++i}<br>`); // ++i = 12 (전위 증가 연산자)
+        document.write(`i-- = ${i--}<br>`); // i-- = 12 (후위 감소 연산자)
+        document.write(`--i = ${--i}<br>`); // --i = 10 (전위 감소 연산자)
+        document.write("<hr>");
+        document.write(`${i}==${j} = ${i == j}<br>`); // i==j = true (값만 비교)
+        document.write(`${i}===${j} = ${i === j}<br>`); // i===j = false (값과 타입 모두 비교)
+        document.write("<hr>");
+        document.write(`${i}!=${j} = ${i == j}<br>`); // i!=j = false (값만 비교)
+        document.write(`${i}!==${j} = ${i === j}<br>`); // i!==j = true (값과 타입 모두 비교)
+        document.write("<hr>");
+
+        /*
+        alert() / prompt() / confirm()
+        alert() : 경고창을 띄우는 함수로, 사용자가 확인 버튼을 클릭할 때까지 대기한다.
+        prompt() : 사용자에게 입력을 받는 함수로, 입력창과 확인/취소 버튼이 있는 대화상자를 띄운다. 사용자가 입력한 값을 반환한다.
+        confirm() : 사용자에게 확인/취소 버튼이 있는 대화상자를 띄우는 함수로, 사용자가 확인 버튼을 클릭하면 true를, 취소 버튼을 클릭하면 false를 반환한다.
+        window.~~~ 가 생략된 것임
+        */        
+
+        //형변환
+        //parseInt() : 문자열을 정수로 변환하는 함수로, 두 번째 인자로 진법을 지정할 수 있다. (기본값은 10진수)
+        //javascript에서는 Integer.parseInt()와 같은 형태로 사용하지 않고, parseInt()로 사용한다. window.이 생략된 것임
+        //number() : 문자열을 숫자로 변환하는 함수로, 정수와 실수를 모두 변환할 수 있다.
+        //isNaN() : 값이 NaN인지 확인하는 함수로, NaN은 숫자가 아님을 나타내는 특수한 값이다. (isNotANumber의 약자)
+
+        let data = "a100";
+        document.write(`data= ${data}, type = {typeof data}<br>`); // data= a100, type = string
+        //형변환
+        document.write(`parseInt(data) = ${parseInt(data)}<br>`); // parseInt(data) = NaN (형변환 실패)
+        document.write(`Number(data) = ${Number(data)}<br>`); // Number(data) = NaN (형변환 실패)
+        document.write(`isNaN(data) = ${isNaN(data)}<br>`); // isNaN(data) = true (NaN이 나왔으므로)
+        
+        document.write("<hr>");
+        data="100";
+        document.write(`parseInt(data) = ${parseInt(data)}<br>`); 
+        document.write(`Number(data) = ${Number(data)}<br>`); 
+        document.write(`isNaN(data) = ${isNaN(data)}<br>`); 
+
+        document.write("<hr>");
+        data="100a";
+        document.write(`parseInt(data) = ${parseInt(data)}<br>`); // parseInt(data) 문자를 만나기 전까지 만난 숫자만 남기고 변환됨 (단위 등을 절사할때 사용할 수 있음)
+        document.write(`Number(data) = ${Number(data)}<br>`); // Number(data) = NaN (형변환 실패)
+        document.write(`isNaN(data) = ${isNaN(data)}<br>`); // isNaN(data) = true (NaN이 나왔으므로)
+
+        document.write("<hr>");
+
+        let a = 10, b="3";
+        document.write(`a + b = ${a + b}<br>`); // a + b = 103 (문자열로 연결됨) // 문자열의 우선순위가 높아 연결 연산자로 동작
+        document.write(`a + b = ${a + parseInt(b)}<br>`); // a + b = 13 (숫자로 계산됨) // parseInt(b)로 형변환하여 숫자로 계산됨
+        document.write(`a * b = ${a * b}<br>`); // a * b = 30 (숫자로 계산됨)
+        document.write(`a - b = ${a - b}<br>`); // a - b = 7 (숫자로 계산됨)
+
+        document.write("<hr>");
+        let age = prompt("숫자를 입력하세요", "20");
+        document.write(`age = ${age}, type = ${typeof age}<br>`); // age = 20, type = string (prompt()로 입력받은 값은 문자열로 반환됨)
+
+
+        document.write("<hr>");
+        let result = confirm("정말 삭제하시겠습니까?") ? document.write("삭제되었습니다.") : document.write("삭제가 취소되었습니다.");//boolean 값이 반환됨
+        document.write(`result = ${result}<br>`); // result = true (확인 버튼을 클릭하면 true, 취소 버튼을 클릭하면 false)
+        document.write("<hr>");
+
+
+
+
+    </script>
+</body>
+</html>

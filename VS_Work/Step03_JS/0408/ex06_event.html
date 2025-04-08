@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="header1"> Event를 이용한 동작</h1>
+    <!--Form으로 감싸져있지 않은 버튼은 Click 타입으로 동작한다.-->
+    <Button id="btn1" onclick="test1(this)">버튼1</button> <!-- 태그에 직접 함수이름 -->
+    <Button id="btn2">버튼2</button>
+    <Button id="btn3">버튼3</button>
+    <Button id="btn4">버튼4</button>
+    <Button id="btn5">버튼5</button>
+    <Button id="btn6">버튼6</button>
+
+
+    <script>
+
+        // JS에서 이벤트를 다루는 방법은 크게 3가지가 있다.
+        // 1. HTML에서 직접 등록하는 방법
+        // 2. javascript에서 element를 찾아서 등록하는 방식
+        // 3. eventListener를 사용해서 등록하는 방법
+
+        //JS에서 DOM을 사용해서 이벤트를 다룰 수 있다.
+        //DOM이란   Document Object Model의 약자로, HTML 문서를 객체로 표현한 것이다.
+        //DOM은 HTML 문서의 구조를 트리 형태로 표현한 것으로, 각 요소는 노드(node)라고 불린다.
+        // CSS의 선택자처럼 javascript에서도 선택자를 사용해서 요소를 선택할 수 있다.
+
+        //~addEventListener(이벤트종류,함수,t/f)
+        //false는 기본값으로 생략 가능하다.
+        //capturing : true, bubbling : false
+        //capturing : 이벤트가 발생한 요소에서부터 부모 요소로 전파되는 방식이다. 괄호 안쪽으로 (true) -> ie가 캡쳐링을 지원하지 않아서 대체로 bubbling을 사용
+        //bubbling : 이벤트가 발생한 요소에서부터 자식 요소로 전파되는 방식이다. 괄호 바깥으로 (false)
+        // <div> 태그가 여러 개 중첩되어있고 각각에 이벤트가 등록되어 있을 때, 동작하는 순서가 다르다.
+        //동일한 이벤트의 종류를 여러 번 등록할 수 있다.
+
+        function test1(th) {
+            console.log("test1() 호출됨");
+            alert(event.target); // event.target은 이벤트가 발생한 요소를 가리킨다.
+            //event.target은 이벤트가 발생한 요소를 가리킨다.
+            //this는 이벤트가 발생한 요소를 가리킨다.
+            //this를 전달하지 않아도 event.target을 사용하면 된다.
+            // th.style.border = "2px solid red"; //this를 이용함
+            // event.target.style.fontSize = "10px" //event.target을 이용함
+
+            //h1태그를 찾아서 style을 변경
+            //javascript에서 특정 element를 찾는 방법
+            //id로 찾기 (하나의 결과만 나옴)
+            //class 이름, 이름, 태그 이름으로 찾기 (중복 가능, 0개 이상의 nodeList 형태로 반환됨. 배열처럼 반환된다.)
+            //selector로 찾기 . / # / [] / :checked 등 ...
+            //결과가 여러개 나오는 경우 인덱스 관리가 필요해진다
+
+            // document.getElementById("id1"); //id로 찾기 -> 무조건 하나의 결과만 나온다.
+            // document.getElementsByName("name1"); //name으로 찾기 
+            // document.getElementsByClassName("class1"); //class로 찾기 
+            // document.getElementsByTagName("h1"); //tag로 찾기
+            // document.querySelector("#id1"); //selector로 찾기 (하나의 결과만 나옴)
+            // document.querySelectorAll(".class1"); //selector로 찾기 (0개 이상의 결과가 나옴. 배열처럼 반환됨.)
+
+            document.getElementById("header1").style.backgroundColor = "yellow";
+        }
+
+
+        //click2에 event 등록        
+        // let btn2 = document.getElementById(btn2); //페이지가 로딩이 될 때 DOM이 생성된다.
+        // body보다 먼저 이벤트가 등록되지 않으면 사용할 수 없다. body가 끝나기 전에 선언되었으므로 사용할 수 없다.
+        // onload = function () {
+        //     body가 끝나기 전에 선언된 항목을 동작하게 하려면 onLoad 시점에 읽어올 수 있도록 명시적으로 등록시켜주어야 한다.
+        //     let btn2 = document.getElementById("btn2"); //페이지가 로딩이 될 때 DOM이 생성된다.
+        //     btn2.onClick = function () {
+        //         console.log("click2() 호출됨");
+        //     }
+        // }
+
+        btn2.onclick = test3; //대소문자 가린다. onclick 소문자이다. onClick으로 하면 동작 안한다...... 
+        btn2.onclick = test2; // 두번째등록된 onclick이 동작한다. (이벤트가 여러개 등록될 수 없다. 마지막에 등록된 이벤트만 동작한다.)
+
+        // 이벤트주체.on이벤트종류 = 함수; -> 동일한이벤트에 여러개 이벤트 등록 불가능
+        // 이벤트주체.addeventListener(이벤트종류,함수,t/f); -> 이벤트가 여러개 등록될 수 있음
+        //eventlistener를 사용할 때는 이벤트 종류에 on을 붙이지 않음
+
+        function test2() {
+            document.querySelector("#header1").style.color = "red";
+        }
+
+        btn3.addEventListener("click", test3, false); //false는 기본값으로 생략 가능하다. test3는 함수객체이다. () 붙이지 않는다. 즉시실행이 아니기때문
+        document.querySelector("#btn3").addEventListener("click", function () {
+            console.log("하나의 버튼에 2번째 이벤트 등록"); //selector에서 바로 등록할 수도 있다.
+        }, false);
+
+        function test3() {
+            alert(document.getElementsByTagName("h1")); // 배열형태로 반환된다 (collection)
+            document.getElementsByTagName("h1")[0].style.fontSize = "30px";
+        }
+
+
+    </script>
+</body>
+<script>
+    //body보다 밑에 script를 별도로 선언하면 DOM이 생성된 후에 실행된다.
+    let btn2 = document.getElementById("btn2"); //페이지가 로딩이 될 때 DOM이 생성된다.
+</script>
+
+</html>
