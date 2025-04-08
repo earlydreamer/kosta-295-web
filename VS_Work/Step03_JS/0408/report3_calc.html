@@ -34,12 +34,12 @@
             let number2;
             let operator;
             let inputNumber = function () {
-                number1 = parseInt(prompt("첫 번째 숫자를 입력하세요."));
+                number1 = parseInt(prompt("첫 번째 숫자를 입력하세요."), 10); // 0 붙으면 8진수로 파싱되는거 피하기 위해 ,10 붙임 (10진수 명시 파라미터)
                 while (isNaN(number1)) {
                     alert("잘못된 숫자입니다.");
                     number1 = prompt("첫 번째 숫자를 입력하세요.");
                 }
-                number2 = parseInt(prompt("두 번째 숫자를 입력하세요."));
+                number2 = parseInt(prompt("두 번째 숫자를 입력하세요."), 10); // 0 붙으면 8진수로 파싱되는거 피하기 위해 ,10 붙임 (10진수 명시 파라미터)
                 while (isNaN(number2)) {
                     alert("잘못된 숫자입니다.");
                     number2 = prompt("두 번째 숫자를 입력하세요.");
@@ -61,14 +61,13 @@
             const mul = (a, b) => a * b;
             const div = (a, b) => a / b;
 
-            const abort = () => {
-                alert("종료합니다.");
-                return NaN;
-            }
-
             const printResult = (result) => {
                 let resultBox = document.querySelector(".resultBox");
-                if (!result)
+                //!result 하면 0까지 false로 인식되기 때문에 이 케이스에서는 falsely 사용할 수 없다
+                // NaN 여부 검사는 isNaN() 함수를 쓰는 것이 안전하다.
+                // NaN은 자기 자신과도 같지 않은 유일한 값이다. 
+                // IEEE754 명세에 따라 합의된 표준 처리. 다른 언어도 NaN은 동일한 처리. !== 연산자로 비교 불가능하다.
+                if (isNaN(result))
                     resultBox.innerHTML += `<p>계산 취소</p>`;
                 else
                     resultBox.innerHTML += `<p>${number1} ${operator} ${number2} = ${result}</p>`;
