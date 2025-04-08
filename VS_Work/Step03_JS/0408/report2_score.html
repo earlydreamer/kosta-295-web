@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 500px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid red;
+    }
+
+    th {
+        background-color: lightpink;
+        border: 1px solid black;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        width: 100px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1> 성적표 </h1>
+        <script>
+            let name = window.prompt("이름을 입력하세요.");
+            let kor = window.prompt("국어 점수를 입력하세요.");
+            while (kor < 0 || kor > 100 || isNaN(kor)) {
+                alert("잘못된 점수입니다.");
+                kor = window.prompt("국어 점수를 입력하세요.");
+            }
+            let eng = window.prompt("영어 점수를 입력하세요.");
+            while (eng < 0 || eng > 100 || isNaN(eng)) {
+                alert("잘못된 점수입니다.");
+                eng = window.prompt("영어 점수를 입력하세요.");
+            }
+            let math = window.prompt("수학 점수를 입력하세요.");
+            while (math < 0 || math > 100 || isNaN(math)) {
+                alert("잘못된 점수입니다.");
+                math = window.prompt("수학 점수를 입력하세요.");
+            }
+
+            let total = 0;
+            let subjectCount = 0;
+            let avg = total / 3;
+            let grade;
+
+            let setTotal = (value) => { total += parseInt(value); subjectCount++; }
+            setTotal(kor);
+            setTotal(eng);
+            setTotal(math);
+            avg = Math.round(total / subjectCount);
+
+            if (avg <= 100 && avg > 90) grade = "수"
+            else if (avg > 80) grade = "우"
+            else if (avg > 70) grade = "미"
+            else if (avg > 60) grade = "양"
+            else if (avg <= 60) grade = "가"
+            else grade = "문의 필요";
+
+            document.write("<table>");
+            document.write("<tr>");
+            document.write("<th>이름</th>");
+            document.write("<th>국어</th>");
+            document.write("<th>영어</th>");
+            document.write("<th>수학</th>");
+            document.write("<th>총점</th>");
+            document.write("<th>평균</th>");
+            document.write("<th>등급</th>");
+            document.write("</tr>");
+            document.write("<tr>");
+            // 루프 씌우거나 다른 데이터가 끼어들어와도 수정 용이하게 각 컬럼을 전부 분리해서 작성
+            document.write("<td>" + name + "</td>");
+            document.write("<td>" + kor + "</td>");
+            document.write("<td>" + eng + "</td>");
+            document.write("<td>" + math + "</td>");
+            document.write("<td>" + total + "</td>");
+            document.write("<td>" + avg + "</td>");
+            document.write("<td>" + grade + "</td>");
+            document.write("</tr>");
+
+            document.write("</table>");
+
+        </script>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 500px;
+    }
+
+    .resultBox {
+
+        width: 300px;
+        height: 200px;
+        margin: 10px;
+        border: 1px solid red;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>계산해보자</h1>
+        <button>계산</button>
+        <div class="resultBox">
+
+        </div>
+        <script>
+
+            let number1;
+            let number2;
+            let operator;
+            let inputNumber = function () {
+                number1 = parseInt(prompt("첫 번째 숫자를 입력하세요."));
+                while (isNaN(number1)) {
+                    alert("잘못된 숫자입니다.");
+                    number1 = prompt("첫 번째 숫자를 입력하세요.");
+                }
+                number2 = parseInt(prompt("두 번째 숫자를 입력하세요."));
+                while (isNaN(number2)) {
+                    alert("잘못된 숫자입니다.");
+                    number2 = prompt("두 번째 숫자를 입력하세요.");
+                }
+            }
+
+
+            let inputOperator = function () {
+                operator = prompt("연산자를 입력하세요. (ex: +, -, *, /)");
+                let isLoop = true;
+                while (!(operator === "+" || operator === "-" || operator === "*" || operator === "/") && isLoop) {
+                    confirm("잘못된 연산자입니다. 다시 입력하시겠습니까?") ? operator = prompt("연산자를 입력하세요. (ex: +, -, *, /)") : isLoop = false;
+                }
+            }
+
+
+            const add = (a, b) => a + b;
+            const sub = (a, b) => a - b;
+            const mul = (a, b) => a * b;
+            const div = (a, b) => a / b;
+
+            const abort = () => {
+                alert("종료합니다.");
+                return NaN;
+            }
+
+            const printResult = (result) => {
+                let resultBox = document.querySelector(".resultBox");
+                if (!result)
+                    resultBox.innerHTML += `<p>계산 취소</p>`;
+                else
+                    resultBox.innerHTML += `<p>${number1} ${operator} ${number2} = ${result}</p>`;
+
+            }
+
+            const calc = function () {
+                inputNumber();
+                inputOperator();
+                switch (operator) {
+                    case "+":
+                        result = add(number1, number2); break;
+                    case "-":
+                        result = sub(number1, number2); break;
+                    case "*":
+                        result = mul(number1, number2); break;
+                    case "/":
+                        result = div(number1, number2); break;
+                    default: result = NaN; break;
+                }
+                printResult(result);
+            }
+
+            document.querySelector("button").addEventListener("click", calc);
+
+        </script>
+    </div>
+</body>
+
+</html>

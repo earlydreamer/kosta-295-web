@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    .container{
+        width:500px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid red;
+    }
+
+    .table-head{
+        background-color : lightpink;
+        font-weight:bold;
+        text-align: center;
+        color:white;
+    }
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        width : 50px;
+    }
+    h1{
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class = "container">
+    <h1>구구단</h1>
+    <script>
+        document.write("<table>")
+        for (let i = 0; i < 9; i++) {
+            document.write("<tr>");
+            for (let j = 2; j < 10; j++) {
+                if (i === 0) document.write(`<td class = "table-head">${j}단</td>`);
+                else document.write("<td>" + j + "*" + i + "=" + (i * j) + "</td>");
+            }
+            document.write("</tr>");
+        } document.write("</table>");
+    </script>
+</div>
+</body>
+
+</html>
