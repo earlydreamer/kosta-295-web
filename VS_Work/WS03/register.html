@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+
+    <title>KOSTA</title>
+</head>
+<style>
+    
+    #form_register {
+        padding: 20px;
+        flex: auto
+    }
+
+    #form_register fieldset {
+        border: 1px solid gray;
+        padding: 50px;
+    }
+
+    #form_register label {
+        display: inline-block;
+        width: 120px;
+    }
+
+    #form_register input {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-left: 15px;
+    }
+    
+    .button-area {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+</style>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img src="./img/logo.jpg" alt="logo" ></a> </li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="personal.html">개인</a></li>
+                    <li><a href="business.html"> 기업</a></li>
+                    <li><a href="login.html"> 로그인 </a> </li>
+                    <li><a href="register.html" class="current-page"> 회원가입</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="promotion">
+            <!-- <img src="" alt="광고 이미지"> -->
+            <div class="promotion_text">광고 영역 텍스트</div>
+        </div>
+
+        <main>
+            <div class="contents">
+                <h1 class="contents-title">Register</h1>
+                <!-- <hr> -->
+                <form id="form_register" action="index2.html" method="post"><!-- index2 = Servlit 들어간 페이지 될 예정 -->
+                    <fieldset>
+                    <label for="user_name">이름</label><input type=text id="user_name" required="required" autofocus="autofocus"><br> <!-- required = 반드시 입력해라 -->
+                    <label for="user_email">이메일</label><input type=email id="user_email"><br>
+                    <!-- input type : 입력 형식에 맞게 -->
+                    <label for="user_phone">연락처</label><input type=tel id="user_phone"><br>
+                    <!-- 파싱 방법에 따라 type 안주기도 함 -->
+                    <label for="user_password">비밀번호</label><input type=password id="user_password"><br>
+                    <label for="user_password_validation">비밀번호 확인</label><input type=password
+                            id="user_password_validation"><br>
+                    
+                    <hr>
+                    <div class="button-area">
+                        <button type="submit">회원가입</button></div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </main>
+        <footer>
+            <!-- 주소 각 부분이 의미를 갖도록 잘라서 -->
+            <dl id="footer-address">
+                <dt class="post-number"> 12345 </dt>
+                <dt class="address-section-1">address 1 </dt>
+                <dt class="address-section-2">address 2 </dt>
+                <dt class="address-section-3">address 3 </dt>
+            </dl>
+            <dl id="footer-phone">
+                <dt> 02-0000-0000 </dt>
+            </dl>
+        </footer>
+
+    </div>
+</body>
+
+</html>
