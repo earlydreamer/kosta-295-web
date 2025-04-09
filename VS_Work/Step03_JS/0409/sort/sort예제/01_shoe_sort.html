@@ -609,7 +609,15 @@
                 shoeData = data;
                 displayShoes(shoeData); //데이터를 가져온 후에 한번 갱신
             })
-            .catch(error => console.error('Error loading JSON:', error));
+            .catch(error => {console.error('Error loading JSON:', error)
+                shoeData = []; // 오류 발생 시 빈 배열로 초기화
+                displayShoes(shoeData); // 오류 발생 시에도 빈 배열 표시
+                shoeList.innerHTML = ''; // 기존 내용 초기화
+                const msg = document.createElement('p');
+                msg.className = 'text-center';
+                msg.textContent = 'JSON 파일 로딩에 실패했습니다.';
+                shoeList.appendChild(msg);
+            });
 
         // 신발 리스트 표시
         let displayShoes = (shoes) => {
