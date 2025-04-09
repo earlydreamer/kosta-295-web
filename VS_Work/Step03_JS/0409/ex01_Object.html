@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> object key와 value</h1>
+    <script>
+        const person = {
+            name: "person",
+            age: 20,
+            addr: "seoul",
+            print: function () {
+                return` ${this.name}+님의 나이는 + ${this.age}+살입니다`
+
+            }
+        }
+        
+
+        console.log(person.name);
+        console.log(person);
+        console.log(person["name"]);
+        console.log(person.print());
+        
+        let keys  = Object.keys(person);
+        let values = Object.values;
+        
+        console.log(keys);
+        console.log(values);
+
+        for (let key of keys){
+            person[key];
+            console.log(key+"="+person[key]);
+            // console.log(key);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
