@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        구조분해할당
+    </h1>
+    <script>
+        //배열이나 객체의 값을 쉽게 꺼내서 변수에 할당할 수 있도록 하는 문법;
+        {
+            const emp = { empno: 101, name: 'John', age: 30, position: 'Developer' };
+            let empno = 101;
+            let name = 'John';
+            let age = 30;
+            let position = 'Developer';
+            console.log(empno, name, age, position); //101 John 30 Developer
+        }
+        //구조분해할당을 사용하지 않은 경우
+
+        //구조분해할당 사용 시
+        {
+            const emp = { empno: 101, name: 'John', age: 30, position: 'Developer' };
+            console.log(emp); //{ empno: 101, name: 'John', age: 30, position: 'Developer' }
+        }
+
+
+        {
+            const { empno, position, dept = 'dev' } = emp; //emp라는 객체에서 empno, name, age, position을 꺼내서 변수에 할당
+            console.log(empno, name, age, position); //101 John 30 Developer
+        }
+
+        {
+            const { empno, position, name, sal = 100 } = emp;
+            console.log(empno, name, position, sal);
+
+        }
+
+        {
+            const { empno, name: ename, position, sal = 100 } = emp;
+            console.log(empno, ename, age, position); //name을 ename으로 바꿔서 사용
+        }
+
+        {
+            //구조분해할당 안한 배열
+            const jobs = ['developer', 'designer', 'manager'];
+            let first = jobs[0];
+            let second = jobs[1];
+            console.log(first, second); //developer designer
+        }
+        {
+            const jobs = ['developer', 'designer', 'manager'];
+            let [first, second] = jobs; //배열에서 순서대로 값을 꺼내서 변수에 할당
+            //배열은 key가 없으므로 객체와 달리 순서가 있다 인덱스 순서대로 할당됨
+        }
+        {
+            const numbers = [1, 2, 3, 4, 5, 6, 7];
+            let [a,b,c] = numbers; //배열에서 순서대로 값을 꺼내서 변수에 할당
+            console.log(a, b, c); //1 2 3
+        }
+        {
+            const numbers = [1, 2, 3, 4, 5, 6, 7];
+            let [a,b,,,c] = numbers; //배열에서 중간을 건너뛰고 값 할당
+            console.log(a, b, c); //1 2 5
+        }
+        {
+            const numbers = [1, 2, 3, 4, 5, 6, 7];
+            let [a,b,...c] = numbers; //배열에서 앞 2개 변수에 담고 나머지 배열로 할당 // spread 연산자랑 다른 개념임 (비슷하게 생겼지만 다름)
+            //...은 나머지 연산자
+            //배열에서 나머지 값을 c라는 배열에 담는다.
+            //마지막 변수만 ...을 붙일 수 있다. 뒤에 변수를 더 붙일 수 없다.
+            console.log(a, b, c); //1 2 [3, 4, 5, 6, 7]
+        }
+
+        {
+            let a=5,b=10;
+            console.log(a,b);
+
+            let tmp=a;
+            a=b,b=tmp;
+            console.log(a,b); //10 5
+        }
+
+        {
+            let a=5,b=10;
+            [b,a]=[a,b]; //배열을 사용해서 swap
+        }
+        
+        //단축속성명
+        {   //단축속성명 사용 안함
+            let person = {
+                name:name,
+                age:age
+            }
+
+        }
+        {   //단축속성명 사용함
+            //변수와 객체의 key가 같을 경우 단축속성명 사용 가능
+            let person = {
+                name,
+                age
+            }
+        }
+
+        
+
+    </script>
+</body>
+
+</html>
