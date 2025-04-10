@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="css/basic.css" />
+	<style type="text/css">
+		.poster {
+			width: 150px;
+			height: 150px;
+
+		}
+
+		a {
+			text-decoration: none
+		}
+
+		#content{
+			text-align:center;
+		}
+
+		#price{
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.poster{
+			height:100px;
+			width: auto;
+			
+		}
+	</style>
+
+
+
+
+</head>
+
+<body>
+	<article class="main">
+		<section>
+			<table style="width: 80%; margin: 0 auto;" id="cartList">
+				<caption class="caption">찜 리스트</caption>
+				<thead>
+					<tr>
+						<th>이미지</th>
+						<th>상품번호</th>
+						<th>상품이름</th>
+						<th>가격</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody id="content">
+					<!-- 찜목록 출력 -->
+
+				</tbody>
+			</table>
+		</section>
+		<section class="toalprice" id="price">
+			<!-- 가격 -->
+			주문가격 : <span id="priceLabel">0</span>원
+		</section>
+		<section class="link">
+			<table style="margin: 0 auto;"></table>
+			<tr>
+				<td style="text-align: center;"></td>
+					<a href="">주문하러 가기</a>
+					<a href="index.html">DVD LIST</a>
+				</td>
+			</tr>
+			</table>
+		</section>
+	</article>
+</body>
+<script>
+	const printInfo = function () {
+		let len = sessionStorage.length;
+		let validCount = 0;
+		let price = 0;
+		for (let i = 0; i < len; i++) {
+			let key = sessionStorage.key(i);
+			let value = sessionStorage.getItem(key);
+
+			//key가 isNaN일 경우 continue 
+			// (sessionStorage value에 id 이외의 정보가 있을 수 있으므로 최소한의 validation)
+			if (isNaN(key)) continue
+			else validCount++; //key가 숫자인 경우 유효한 키 카운트 증가...
+
+			//value의 "" 제거
+			value = value.replace(/\"/g, "");
+			let arr = value.split(",");
+			let str = "<tr>";
+			str += "<td><img class='poster' src=" + arr[1] + " ></td>";
+			str += "<td>" + key + "</td>";
+			str += "<td>" + arr[0] + "</td>";
+			str += "<td>" + arr[2] + "</td>";
+			str += `<td><button id = 'btn${arr[0]}' onclick="deleteItem('${key}')"> 삭제 </button></td>`;
+			str += "</tr>";
+			price += parseInt(arr[2]);
+			document.getElementById("content").innerHTML += str;
+		}
+		if (validCount == 0) { //찜목록이 없을 경우
+			document.getElementById("content").innerHTML = "<tr><td colspan='5'>찜목록이 없습니다.</td></tr>";
+		} 
+		document.getElementById("priceLabel").innerText = price;
+	}
+
+	printInfo(); //찜목록 출력
+
+	//deleteItem 함수
+	const deleteItem = function (key) {
+		sessionStorage.removeItem(key); //세션스토리지에서 삭제
+		alert("삭제되었습니다.");
+		location.reload(); //페이지 새로고침
+	}
+
+
+
+</script>
+
+</html>
