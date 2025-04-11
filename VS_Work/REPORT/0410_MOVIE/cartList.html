@@ -6,11 +6,6 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="css/basic.css" />
 	<style type="text/css">
-		.poster {
-			width: 150px;
-			height: 150px;
-
-		}
 
 		a {
 			text-decoration: none
@@ -75,15 +70,15 @@
 </body>
 <script>
 	const printInfo = function () {
-		let len = sessionStorage.length;
+		let len = localStorage.length;
 		let validCount = 0;
 		let price = 0;
 		for (let i = 0; i < len; i++) {
-			let key = sessionStorage.key(i);
-			let value = sessionStorage.getItem(key);
+			let key = localStorage.key(i);
+			let value = localStorage.getItem(key);
 
 			//key가 isNaN일 경우 continue 
-			// (sessionStorage value에 id 이외의 정보가 있을 수 있으므로 최소한의 validation)
+			// (localStorage value에 id 이외의 정보가 있을 수 있으므로 최소한의 validation)
 			if (isNaN(key)) continue
 			else validCount++; //key가 숫자인 경우 유효한 키 카운트 증가...
 
@@ -110,12 +105,10 @@
 
 	//deleteItem 함수
 	const deleteItem = function (key) {
-		sessionStorage.removeItem(key); //세션스토리지에서 삭제
+		localStorage.removeItem(key); //로컬스토리지에서 삭제
 		alert("삭제되었습니다.");
 		location.reload(); //페이지 새로고침
 	}
-
-
 
 </script>
 

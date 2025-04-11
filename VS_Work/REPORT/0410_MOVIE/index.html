@@ -120,7 +120,7 @@ table caption{
 		cartinsert[i].addEventListener("click", function () {
 			var info = this.getAttribute("data-info");
 			console.log(info);
-			sessionStorage.setItem(this.id, JSON.stringify(info));
+			localStorage.setItem(this.id, JSON.stringify(info));
 			alert("찜하기 성공");
 		});
 	}
